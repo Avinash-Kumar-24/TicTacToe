@@ -1,5 +1,5 @@
 console.log("Welcome to Tic Tac Toe")
-
+let flag = Math.random();
 let audioTurn = new Audio("sound.mp3")
 let turn = "O"
 let isgameover = false;
@@ -128,6 +128,21 @@ const defence = () =>
     return randomIndex
    
 }
+const check_empty = () => {
+    let count = 0;
+    let boxtext = document.getElementsByClassName("box");
+    for(let i = 0;i < boxtext.length;i++)
+    {
+        if(boxtext[i].innerText === '')
+        {
+            count += 1;
+        }
+    }
+    if(count > 0)
+    return false;
+    else
+    return true;
+}
 const computerPlay = () => {
     let emptyBoxes = [];
     let boxtext = document.getElementsByClassName('boxtext');
@@ -214,7 +229,7 @@ const checkWin = () => {
         if((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "") ){
             if(boxtext[e[0]].innerText === 'X')
             {
-                computer_audio.play();
+                // computer_audio.play();
                 document.querySelector('.imgboxplayer').getElementsByTagName('img')[0].style.width = "200px";
                 document.querySelector('.info').innerText ="Player Wins"
             }
@@ -229,7 +244,7 @@ const checkWin = () => {
         }
     })
 }
-let flag = 0;
+
 if(flag === 0)
 {
     computerPlay();
@@ -245,15 +260,20 @@ if(flag === 0)
                 turn = changeTurn();
                 audioTurn.play();
                 checkWin();
+                
                 if(!isgameover)
                 {
                     document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;         
                     computerPlay();
                 }
             }
+            let store_check = check_empty();
+                if(store_check !== false)
+                    {
+                        document.getElementsByClassName("info")[0].innerText = "Match Draw";
+                    }
         });
     });
-    flag = 1;
 }
 else
 {
@@ -271,15 +291,21 @@ else
                 turn = changeTurn();
                 audioTurn.play();
                 checkWin();
+                
                 if(!isgameover)
                 {
                     document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;         
                     computerPlay();
                 }
             }
+            let store_check = check_empty();
+            if(store_check !== false)
+                {
+                    document.getElementsByClassName("info")[0].innerText = "Match Draw";
+                }
         });
     });
-    flag = 0;
+    
 }
 
 reset.addEventListener('click', () => {
@@ -290,6 +316,7 @@ reset.addEventListener('click', () => {
     });
     turn = "O"
     isgameover = false
+    flag === '0' ? '1' : '0';
     computerPlay();
     document.querySelector(".line").style.width = "0vw";
     document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
