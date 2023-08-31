@@ -318,7 +318,8 @@ reset.addEventListener('click', () => {
     isgameover = false
     flag === '0' ? '1' : '0';
     computerPlay();
-    document.querySelector(".line").style.width = "0vw";
+    // document.querySelector(".line").style.width = "0vw";
     document.getElementsByClassName("info")[0].innerText = "Turn for " + turn;
     document.querySelector('.imgboxplayer').getElementsByTagName('img')[0].style.width = "0px"
+    document.querySelector('.imgboxcom').getElementsByTagName('img')[0].style.width = '0px';
 });
