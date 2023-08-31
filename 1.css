@@ -21,6 +21,7 @@ nav
 
 }
 .container{
+    padding-left: 15em;
     display: grid;
     grid-template-rows: repeat(3,10vw);
     grid-template-columns: repeat(3,10vw);
@@ -30,6 +31,7 @@ nav
     border:2px solid blue;
     text-align: center;
     font-size: 5vw;
+    /* padding-left: 2em; */
     display: flex;
     cursor: pointer;
     justify-content: center;
@@ -39,10 +41,12 @@ nav
 }
 
 .imgboxplayer img{
+    padding-left: 10em;
     width: 0;
     transition: width 1s ease-in-out;
 }
 .imgboxcom img{
+    padding-left: 10em;
     width: 0;
     transition: width 1s ease-in-out;
 }
@@ -58,10 +62,21 @@ nav
 .bb-0{
     border-bottom: 0;
 }
-
+.info{
+    font-size: 25px;
+}
 #reset{
+    padding-left: 30em;
     background-color: azure;
     padding: 0 8px;
-    font-size: 20px;
+    font-size: 25px;
     color: brown;
+}
+div{
+    padding-top: 25px;
+    padding-left: 20px;
+}
+h1{
+    padding-top: 20px;
+    padding-left: 25px;
 }
